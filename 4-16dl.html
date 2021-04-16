@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue2.6.12min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <a href="" v-on:click.prevent="login">点击注册</a>
+        <a href="" v-on:click.prevent="enter">点击登录</a>
+        <user-login v-if='islogin'></user-login>
+        <user-enter v-if='isenter'></user-enter>
+    </div>
+    <script>
+        Vue.component('user-login',{
+            template:'<h2>注册</h2>'
+        })
+        Vue.component('user-enter',{
+            template:'<h2>登录</h2>'
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                islogin:false,
+                isenter:false
+            },
+            methods:{
+                login(){
+                    this.islogin=true
+                    this.isenter=false
+                },
+                enter(){
+                    this.islogin=false
+                    this.isenter=true
+                }
+            }
+        })
+    </script>
+</body>
+</html>
